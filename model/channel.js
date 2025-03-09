@@ -1,0 +1,34 @@
+const { Schema, default: mongoose } = require("mongoose");
+
+const schema = new Schema({
+    channelID: {
+        type: String,
+        required: true
+    },
+    channelName: {
+        type: String,
+        defualt: null
+    },
+    owner_id: {
+        type: mongoose.Types.ObjectId,
+        ref: "User"
+    },
+    expired_at: {
+        type: Date,
+        default: null
+    },
+    status: {
+        type: String,
+        enum: ["ENABLE", "DISABLE"],
+        default: "ENABLE"
+    },
+    type: {
+        type: String,
+        enum: ["CHANNEL", "GROUP", "BOT"],
+        default: "CHANNEL"
+    }
+}, { timestamps: true });
+
+const model = mongoose.model("V2ray", schema);
+
+module.exports = model;
