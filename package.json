@@ -2,9 +2,10 @@
   "name": "tutorial",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app/app.js"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +13,6 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "mongoose": "^8.12.1",
-    "node-telegram-bot-api": "^0.66.0"
+    "telegraf": "^4.16.3"
   }
 }
