@@ -13,5 +13,15 @@ export const userPanelKeyboardReplyMarkup = (ctx) => {
     if (ctx.user.isAdmin) {
         replyMarkUp.push(['ادمین پنل']);
     }
-    return Markup.keyboard(replyMarkUp).resize()
+    return Markup.keyboard(replyMarkUp).resize();
+}
+
+//admin-panel
+export const adminPanelKeyboardReplyMarkup = (ctx) => {
+    let replyMarkUp = [
+        ['مدیریت کانفیگ ها'],
+        ['مدیریت سفارشات'],
+        ['بازگشت']
+    ];
+    return Markup.keyboard(replyMarkUp).resize();
 }
