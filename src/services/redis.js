@@ -2,31 +2,35 @@ import Redis from "ioredis";
 
 const redis = new Redis();
 
-export async function saveStep(userId, step) {
-    const [last] = await lastValue(userId);
+export async function redisSaveStep(userId, step) {
 
-    if (last == step) return;
+    const last = await redisGetStep(userId);
 
+    // const steps = await redisShowLrange(userId);
+    if (last != undefined) {
+        if (last[0] == step) return;
+    }
     if (step == "home") {
         await redis.del(`steps:${userId}`)
     }
     await redis.rpush(`steps:${userId}`, step);
-    // await showLrange(userId);
+    await redisShowLrange(userId);
 
 }
-export async function showLrange(userId) {
+export async function redisShowLrange(userId) {
     const steps = await redis.lrange(`steps:${userId}`, 0, -1);
 
     console.log(steps, steps.length);
     return steps;
 }
-async function lastValue(userId) {
+export async function redisGetStep(userId) {
     const last = await redis.lrange(`steps:${userId}`, -1, -1);
     // console.log("last", last);
-    return last;
+    return last[0];
 }
-export async function goBackStep(userId) {
+export async function redisGoBackStep(userId, ctx) {
     const step = await redis.rpop(`steps:${userId}`)
+
     // console.log("res ", step);
     return step;
 }
