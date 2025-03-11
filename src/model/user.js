@@ -1,4 +1,4 @@
-const { Schema, default: mongoose } = require("mongoose");
+import mongoose, { Schema } from "mongoose";
 
 const schema = new Schema({
     userID: {
@@ -21,6 +21,10 @@ const schema = new Schema({
     mobile: {
         type: String,
         default: null,
+    },
+    balance: {
+        type: Number,
+        default: 0
     },
     email: {
         type: String,
@@ -48,6 +52,4 @@ const schema = new Schema({
     }
 }, { timestamps: true });
 
-const model = mongoose.model("User", schema);
-
-module.exports = model;
+export const model = mongoose.model("User", schema);

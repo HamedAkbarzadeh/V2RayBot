@@ -1,8 +1,26 @@
-const { Schema, default: mongoose } = require("mongoose");
+import mongoose, { Schema } from "mongoose";
 
 const schema = new Schema({
     name: {
         type: String,
+        default: null
+    },
+    description: {
+        type: String,
+        default: null
+    },
+    type: {
+        type: String,
+        enum: ["SPECIAL_CONFIG", "GROUP_CONFIG", "FREE_CONFIG"],
+        required: true,
+        default: "SPECIAL_CONFIG"
+    },
+    status: {
+        type: String,
+        enum: ["ACTIVE", "INACTIVE"]
+    },
+    price: {
+        type: Number,
         default: null
     },
     link: {
@@ -13,17 +31,17 @@ const schema = new Schema({
         type: String,
         default: null,
     },
-    usersCountUsed: {
+    region: {
+        type: String,
+        default: null,
+    },
+    usersUsed: {
         type: Number,
         default: 0,
     },
     netVolume: {
         type: Number,
         default: 0,
-    },
-    region: {
-        type: String,
-        default: null,
     },
     expired_at: {
         type: Date,

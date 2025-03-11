@@ -5,9 +5,9 @@ const schema = new Schema({
         type: mongoose.Types.ObjectId,
         ref: "User"
     },
-    v2rayGroup_id: {
+    v2ray_id: {
         type: mongoose.Types.ObjectId,
-        ref: "V2rayGroup"
+        ref: "V2ray"
     },
     payment_id: {
         type: mongoose.Types.ObjectId,

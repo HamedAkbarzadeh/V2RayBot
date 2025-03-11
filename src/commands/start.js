@@ -1,5 +1,11 @@
-import { userPanelMenu } from "../handlers/user-panel/userPanel.js"
+import { appName } from "../config/config.js";
+import { userPanelKeyboardReplyMarkup } from './../keyboards/replykeyboard.js';
+
 export const startCommand = (ctx) => {
-    userPanelMenu(ctx);
+    let text = `به ربات کانفیگ ${appName} خوش آمدید . \n`
+    console.log(ctx.chat, ctx.from);
+
+    ctx.reply(text, userPanelKeyboardReplyMarkup(ctx));
+
 }
 
