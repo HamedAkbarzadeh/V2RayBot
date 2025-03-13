@@ -5,10 +5,11 @@ const redis = new Redis();
 export async function redisSaveStep(userId, step) {
 
     const last = await redisGetStep(userId);
+    console.log("TEST", last);
 
     // const steps = await redisShowLrange(userId);
     if (last != undefined) {
-        if (last[0] == step) return;
+        if (last == step) return;
     }
     if (step == "home") {
         await redis.del(`steps:${userId}`)

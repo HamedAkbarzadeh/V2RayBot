@@ -1,5 +1,7 @@
 
 export const accountInfo = (ctx) => {
+    redisSaveStep(ctx.user.userID, "accountInfo");
+
     const text = `*🧾 اطلاعات حساب شما *
 
     🔰 شناسه کاربری : ${ctx.user.userID}

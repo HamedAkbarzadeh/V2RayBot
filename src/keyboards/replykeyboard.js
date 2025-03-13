@@ -1,5 +1,7 @@
 import { Markup } from "telegraf"
 
+
+//** user-panel **\\
 export const userPanelKeyboardReplyMarkup = (ctx) => {
     let replyMarkUp = [
         ['کانفیگ های من', 'خرید کانفیگ'],
@@ -16,12 +18,21 @@ export const userPanelKeyboardReplyMarkup = (ctx) => {
     return Markup.keyboard(replyMarkUp).resize();
 }
 
-//admin-panel
+//** admin-panel **\\
 export const adminPanelKeyboardReplyMarkup = (ctx) => {
     let replyMarkUp = [
         ['مدیریت کانفیگ ها'],
         ['مدیریت سفارشات'],
         ['بازگشت']
     ];
+    return Markup.keyboard(replyMarkUp).resize();
+}
+
+export const v2rayConfigManageKeyboardReplyMarkup = (ctx) => {
+    let replyMarkUp = [
+        ['ویرایش کانفیگ', 'افزودن کانفیگ'],
+        ['نمایش تمام کانفیگ ها', 'حذف کانفیگ'],
+        ["بازگشت"],
+    ]
     return Markup.keyboard(replyMarkUp).resize();
 }
