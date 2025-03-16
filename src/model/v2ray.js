@@ -11,9 +11,9 @@ const schema = new Schema({
     },
     type: {
         type: String,
-        enum: ["SPECIAL_CONFIG", "GROUP_CONFIG", "FREE_CONFIG"],
+        enum: ["SINGLE_CONFIG", "GROUP_CONFIG"],
         required: true,
-        default: "SPECIAL_CONFIG"
+        default: "SINGLE_CONFIG"
     },
     status: {
         type: String,
@@ -40,7 +40,7 @@ const schema = new Schema({
         default: 0,
     },
     netVolume: {
-        type: Number,
+        type: String,
         default: 0,
     },
     expired_at: {
@@ -51,4 +51,4 @@ const schema = new Schema({
 
 const model = mongoose.model("V2ray", schema);
 
-module.exports = model;
+export default model;

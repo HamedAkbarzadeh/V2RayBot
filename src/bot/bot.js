@@ -1,4 +1,4 @@
-import { Telegraf } from "telegraf";
+import { session, Telegraf } from "telegraf";
 import { token } from "../config/config.js";
 import { startCommand } from "../commands/start.js";
 import { accountInfo } from "../handlers/user-panel/account/account-info.js";
@@ -9,9 +9,12 @@ import {
   redisGetStep,
 } from "../services/redis.js";
 import { v2RayManage } from "../handlers/admin-panel/v2ray-config/v2ray-manage.js";
-import { v2rayConfigManageKeyboardReplyMarkup } from "../keyboards/replykeyboard.js";
+import { v2rayConfigInsert } from "../handlers/admin-panel/v2ray-config/v2ray-insert.js";
+import { insertConfigStage } from "../services/scene.js";
 
 export const bot = new Telegraf(token);
+bot.use(session());
+bot.use(insertConfigStage.middleware());
 
 export const setupBot = async () => {
   bot.use(auth);
@@ -49,6 +52,10 @@ export const setupBot = async () => {
   bot.hears("ادمین پنل", adminPanel);
   //** v2ray-config management **/
   bot.hears("مدیریت کانفیگ ها", v2RayManage);
-  bot.hears("افزودن کانفیگ", v2rayConfigManageKeyboardReplyMarkup)
+  bot.hears("افزودن کانفیگ", v2rayConfigInsert);
+  // bot.hears("افزودن کانفیگ", (ctx) => {
+
+
+  // })
   bot.launch();
 };
