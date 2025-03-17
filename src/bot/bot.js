@@ -8,13 +8,14 @@ import {
   redisGoBackStep,
   redisGetStep,
 } from "../services/redis.js";
-import { v2RayManage } from "../handlers/admin-panel/v2ray-config/v2ray-manage.js";
-import { v2rayConfigInsert } from "../handlers/admin-panel/v2ray-config/v2ray-insert.js";
-import { insertConfigStage } from "../services/scene.js";
+import { v2RayManage } from "../handlers/admin-panel/v2ray-config/v2rayManage.js";
+import { v2rayConfigInsert } from "../handlers/admin-panel/v2ray-config/v2rayInsert.js";
+import { configStage } from "../services/configScene.js";
+import { showAllConfig } from "../handlers/admin-panel/v2ray-config/v2rayShow.js";
 
 export const bot = new Telegraf(token);
 bot.use(session());
-bot.use(insertConfigStage.middleware());
+bot.use(configStage.middleware());
 
 export const setupBot = async () => {
   bot.use(auth);
@@ -53,9 +54,7 @@ export const setupBot = async () => {
   //** v2ray-config management **/
   bot.hears("مدیریت کانفیگ ها", v2RayManage);
   bot.hears("افزودن کانفیگ", v2rayConfigInsert);
-  // bot.hears("افزودن کانفیگ", (ctx) => {
+  bot.hears("نمایش تمام کانفیگ ها", showAllConfig);
 
-
-  // })
   bot.launch();
 };

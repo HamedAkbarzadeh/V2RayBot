@@ -1,4 +1,4 @@
-import { configDescriptionScene, configNameScene, configExpiredAtScene, configPriceScene, configNetVolumeScene, configUserUsedScene, configRegionScene, configSpeedScene, configLinkScene, configStatusScene, configTypeScene } from "../../../services/scene.js";
+import { configDescriptionScene, configNameScene, configExpiredAtScene, configPriceScene, configNetVolumeScene, configUserUsedScene, configRegionScene, configSpeedScene, configLinkScene, configStatusScene, configTypeScene } from "../../../services/configScene.js";
 import v2rayModel from "../../../model/v2ray.js";
 
 export const v2rayConfigInsert = async (ctx) => {

@@ -13,7 +13,16 @@ const configRegionScene = new Scenes.BaseScene("configRegionScene");
 const configNetVolumeScene = new Scenes.BaseScene("configNetVolumeScene");
 const configExpiredAtScene = new Scenes.BaseScene("configExpiredAtScene");
 
-const insertConfigStage = new Scenes.Stage([
+//show config scenes
+const selectConfigScene = new Scenes.BaseScene("selectConfigScene");
+//delete config scenes
+const deleteConfigScene = new Scenes.BaseScene("deleteConfigScene");
+const confirmDeleteConfigScene = new Scenes.BaseScene("confirmDeleteConfigScene");
+//edit config scenes
+const editConfigScene = new Scenes.BaseScene("editConfigScene");
+
+
+const configStage = new Scenes.Stage([
     configNameScene,
     configDescriptionScene,
     configTypeScene,
@@ -24,7 +33,30 @@ const insertConfigStage = new Scenes.Stage([
     configUserUsedScene,
     configRegionScene,
     configNetVolumeScene,
-    configExpiredAtScene
+    configExpiredAtScene,
+
+    selectConfigScene,
+    deleteConfigScene,
+    confirmDeleteConfigScene,
+    editConfigScene,
+
 ]);
 
-export { insertConfigStage, configNameScene, configDescriptionScene, configTypeScene, configStatusScene, configPriceScene, configLinkScene, configSpeedScene, configUserUsedScene, configRegionScene, configNetVolumeScene, configExpiredAtScene };
+export {
+    configStage,
+    selectConfigScene,
+    editConfigScene,
+    deleteConfigScene,
+    configNameScene,
+    configDescriptionScene,
+    configTypeScene,
+    configStatusScene,
+    configPriceScene,
+    configLinkScene,
+    configSpeedScene,
+    configUserUsedScene,
+    configRegionScene,
+    configNetVolumeScene,
+    configExpiredAtScene,
+    confirmDeleteConfigScene
+};
