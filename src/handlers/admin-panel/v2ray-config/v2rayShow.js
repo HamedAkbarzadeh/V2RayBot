@@ -38,7 +38,7 @@ confirmDeleteConfigScene.action(/^v2ray_delete_(\d+)/, async (ctx) => {
 })
 deleteConfigScene.action(/^v2ray_delete_denied/, async (ctx) => {
     await ctx.reply("با موفقیت کنسل شد .");
-    await ctx.scene.leave();
+    ctx.scene.leave();
 });
 deleteConfigScene.action(/^v2ray_delete_accept_(\d+)/, async (ctx) => {
     await ctx.answerCbQuery("درحال حذف کانفیگ ...")

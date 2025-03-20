@@ -21,7 +21,6 @@ const confirmDeleteConfigScene = new Scenes.BaseScene("confirmDeleteConfigScene"
 //edit config scenes
 const editConfigScene = new Scenes.BaseScene("editConfigScene");
 
-
 const configStage = new Scenes.Stage([
     configNameScene,
     configDescriptionScene,
@@ -40,7 +39,19 @@ const configStage = new Scenes.Stage([
     confirmDeleteConfigScene,
     editConfigScene,
 
+
 ]);
+configStage.use(async (ctx, next) => {
+    let callback_data;
+    if (typeof ctx.callbackQuery != "undefined")
+        callback_data = ctx.callbackQuery.data
+
+    if (callback_data == "cancel") {
+        await ctx.reply("عملیات لغو شد.");
+        await ctx.scene.leave();
+    }
+    await next();
+});
 
 export {
     configStage,
@@ -58,5 +69,5 @@ export {
     configRegionScene,
     configNetVolumeScene,
     configExpiredAtScene,
-    confirmDeleteConfigScene
+    confirmDeleteConfigScene,
 };
