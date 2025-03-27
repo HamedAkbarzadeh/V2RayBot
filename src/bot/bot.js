@@ -12,7 +12,7 @@ import { v2RayManage } from "../handlers/admin-panel/v2ray-config/v2rayManage.js
 import { v2rayConfigInsert } from "../handlers/admin-panel/v2ray-config/v2rayInsert.js";
 import { configStage } from "../services/configScene.js";
 import { showAllConfig } from "../handlers/admin-panel/v2ray-config/v2rayShow.js";
-import { configList } from "../handlers/user-panel/v2ray-config/buy-config/buyConfig.js";
+import { configList, selectedConfigForBuy } from "../handlers/user-panel/v2ray-config/buy-config/buyConfig.js";
 
 export const bot = new Telegraf(token);
 bot.use(session());
@@ -48,7 +48,7 @@ export const setupBot = async () => {
   //user-panel
   bot.hears("حساب کاربری", accountInfo);
   bot.hears("خرید کانفیگ", configList);
-
+  bot.action(/^buy_v2ray_list_(\d+)/, selectedConfigForBuy);
   //#### admin-panel Section ####\\
   bot.use(isAdmin);
   bot.hears("ادمین پنل", adminPanel);
