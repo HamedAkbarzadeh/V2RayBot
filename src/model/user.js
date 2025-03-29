@@ -52,4 +52,4 @@ const schema = new Schema({
     }
 }, { timestamps: true });
 
-export const model = mongoose.model("User", schema);
+export default mongoose.model("User", schema);

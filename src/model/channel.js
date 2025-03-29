@@ -29,6 +29,4 @@ const schema = new Schema({
     }
 }, { timestamps: true });
 
-const model = mongoose.model("V2ray", schema);
-
-module.exports = model;
+export default mongoose.model("V2ray", schema);

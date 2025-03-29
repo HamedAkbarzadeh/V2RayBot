@@ -36,6 +36,4 @@ const schema = new Schema({
     }
 });
 
-const model = mongoose.model("V2rayGroup", schema);
-
-module.exports = model;
+export default mongoose.model("V2rayGroup", schema);
