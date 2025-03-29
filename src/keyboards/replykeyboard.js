@@ -12,7 +12,7 @@ export const userPanelKeyboardReplyMarkup = (ctx) => {
         ['مشخصات کانفیگ ها'],
         ['ارتباط با پشتیبانی', 'کانال ما'],
     ];
-    if (ctx.user.isAdmin) {
+    if ( ctx.user.isAdmin ) {
         replyMarkUp.push(['ادمین پنل']);
     }
     return Markup.keyboard(replyMarkUp).resize();
@@ -23,6 +23,7 @@ export const adminPanelKeyboardReplyMarkup = (ctx) => {
     let replyMarkUp = [
         ['مدیریت کانفیگ ها'],
         ['مدیریت سفارشات'],
+        ['مدیریت دسته بندی'],
         ['بازگشت']
     ];
     return Markup.keyboard(replyMarkUp).resize();
@@ -33,6 +34,14 @@ export const v2rayConfigManageKeyboardReplyMarkup = (ctx) => {
         ['ویرایش کانفیگ', 'افزودن کانفیگ'],
         ['نمایش تمام کانفیگ ها', 'حذف کانفیگ'],
         ["بازگشت"],
+    ]
+    return Markup.keyboard(replyMarkUp).resize();
+}
+export const categoryManageKeyboardReplyMarkup = (ctx) => {
+    const replyMarkUp = [
+        ['افزودن دسته بندی'],
+        ['نمایش و حذف دسته بندی'],
+        ['بازگشت']
     ]
     return Markup.keyboard(replyMarkUp).resize();
 }
