@@ -8,16 +8,19 @@ import { redisGetStep, redisGoBackStep, } from "../services/redis.js";
 import { v2RayManage } from "../handlers/admin-panel/v2ray-config/v2rayManage.js";
 import { v2rayConfigInsert } from "../handlers/admin-panel/v2ray-config/v2rayInsert.js";
 import { configStage } from "../services/configScene.js";
+import { categoryStage } from "../services/Scenes/category.js";
 import { showAllConfig } from "../handlers/admin-panel/v2ray-config/v2rayShow.js";
 import { configList, selectedConfigForBuy } from "../handlers/user-panel/v2ray-config/buy-config/buyConfig.js";
 import { addCategory } from "../handlers/admin-panel/category/insert.js";
 import { categoryManage } from "../handlers/admin-panel/category/manage.js";
 
 export const bot = new Telegraf(token);
-bot.use(session());
-bot.use(configStage.middleware());
 
 export const setupBot = async () => {
+    bot.use(session());
+    bot.use(categoryStage.middleware());
+    bot.use(configStage.middleware());
+
     bot.use(auth);
 
     //back button
@@ -62,5 +65,8 @@ export const setupBot = async () => {
     //** v2ray-config category **/
     bot.hears('مدیریت دسته بندی', categoryManage)
     bot.hears("افزودن دسته بندی", addCategory);
+
+
     bot.launch();
 };
+

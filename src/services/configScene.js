@@ -1,27 +1,28 @@
 import { Scenes } from "telegraf";
+import { cancelMiddleware } from "../middlewares/cancel.js";
 
 //insert config scenes
-const configNameScene = new Scenes.BaseScene("configNameScene");
-const configDescriptionScene = new Scenes.BaseScene("configDescriptionScene");
-const configTypeScene = new Scenes.BaseScene("configTypeScene");
-const configStatusScene = new Scenes.BaseScene("configStatusScene");
-const configPriceScene = new Scenes.BaseScene("configPriceScene");
-const configLinkScene = new Scenes.BaseScene("configLinkScene");
-const configSpeedScene = new Scenes.BaseScene("configSpeedScene");
-const configUserUsedScene = new Scenes.BaseScene("configUserUsedScene");
-const configRegionScene = new Scenes.BaseScene("configRegionScene");
-const configNetVolumeScene = new Scenes.BaseScene("configNetVolumeScene");
-const configExpiredAtScene = new Scenes.BaseScene("configExpiredAtScene");
+export const configNameScene = new Scenes.BaseScene("configNameScene");
+export const configDescriptionScene = new Scenes.BaseScene("configDescriptionScene");
+export const configTypeScene = new Scenes.BaseScene("configTypeScene");
+export const configStatusScene = new Scenes.BaseScene("configStatusScene");
+export const configPriceScene = new Scenes.BaseScene("configPriceScene");
+export const configLinkScene = new Scenes.BaseScene("configLinkScene");
+export const configSpeedScene = new Scenes.BaseScene("configSpeedScene");
+export const configUserUsedScene = new Scenes.BaseScene("configUserUsedScene");
+export const configRegionScene = new Scenes.BaseScene("configRegionScene");
+export const configNetVolumeScene = new Scenes.BaseScene("configNetVolumeScene");
+export const configExpiredAtScene = new Scenes.BaseScene("configExpiredAtScene");
 
 //show config scenes
-const selectConfigScene = new Scenes.BaseScene("selectConfigScene");
+export const selectConfigScene = new Scenes.BaseScene("selectConfigScene");
 //delete config scenes
-const deleteConfigScene = new Scenes.BaseScene("deleteConfigScene");
-const confirmDeleteConfigScene = new Scenes.BaseScene("confirmDeleteConfigScene");
+export const deleteConfigScene = new Scenes.BaseScene("deleteConfigScene");
+export const confirmDeleteConfigScene = new Scenes.BaseScene("confirmDeleteConfigScene");
 //edit config scenes
-const editConfigScene = new Scenes.BaseScene("editConfigScene");
+export const editConfigScene = new Scenes.BaseScene("editConfigScene");
 
-const configStage = new Scenes.Stage([
+export const configStage = new Scenes.Stage([
     configNameScene,
     configDescriptionScene,
     configTypeScene,
@@ -38,36 +39,7 @@ const configStage = new Scenes.Stage([
     deleteConfigScene,
     confirmDeleteConfigScene,
     editConfigScene,
-
 
 ]);
-configStage.use(async (ctx, next) => {
-    let callback_data;
-    if (typeof ctx.callbackQuery != "undefined")
-        callback_data = ctx.callbackQuery.data
+configStage.use(cancelMiddleware);
 
-    if (callback_data == "cancel") {
-        await ctx.reply("عملیات لغو شد.");
-        await ctx.scene.leave();
-    }
-    await next();
-});
-
-export {
-    configStage,
-    selectConfigScene,
-    editConfigScene,
-    deleteConfigScene,
-    configNameScene,
-    configDescriptionScene,
-    configTypeScene,
-    configStatusScene,
-    configPriceScene,
-    configLinkScene,
-    configSpeedScene,
-    configUserUsedScene,
-    configRegionScene,
-    configNetVolumeScene,
-    configExpiredAtScene,
-    confirmDeleteConfigScene,
-};

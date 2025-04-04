@@ -1,15 +1,14 @@
 import { Scenes } from "telegraf";
+import { cancelMiddleware } from "../../middlewares/cancel.js";
 
-const nameScene = new Scenes.BaseScene("nameScene");
-const descriptionScene = new Scenes.BaseScene("descriptionScene");
+export const cateNameScene = new Scenes.BaseScene("cateNameScene");
+export const cateDescriptionScene = new Scenes.BaseScene("cateDescriptionScene");
+export const cateStatusScene = new Scenes.BaseScene("cateStatusScene");
 
-const categoryStage = new Scenes.Stage([
-    nameScene,
-    descriptionScene
+export const categoryStage = new Scenes.Stage([
+    cateNameScene,
+    cateDescriptionScene,
+    cateStatusScene
 ]);
 
-export {
-    categoryStage,
-    nameScene,
-    descriptionScene
-}
+categoryStage.use(cancelMiddleware);

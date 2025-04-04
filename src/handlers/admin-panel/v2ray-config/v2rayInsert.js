@@ -1,7 +1,21 @@
-import { configDescriptionScene, configNameScene, configExpiredAtScene, configPriceScene, configNetVolumeScene, configUserUsedScene, configRegionScene, configSpeedScene, configLinkScene, configStatusScene, configTypeScene } from "../../../services/configScene.js";
+import {
+    configDescriptionScene,
+    configNameScene,
+    configExpiredAtScene,
+    configPriceScene,
+    configNetVolumeScene,
+    configUserUsedScene,
+    configRegionScene,
+    configSpeedScene,
+    configLinkScene,
+    configStatusScene,
+    configTypeScene
+} from "../../../services/configScene.js";
 import v2rayModel from "../../../model/v2ray.js";
 import { cancelInlineKeyboard } from "../../../keyboards/inlinekeyboard.js";
 import { showV2rayForm } from "../../../utils/helper.js";
+
+
 export const v2rayConfigInsert = async (ctx) => {
     await ctx.scene.enter("configNameScene");
 }
@@ -45,10 +59,10 @@ configDescriptionScene.on("text", async (ctx) => {
 //config type setup
 configTypeScene.on("text", async (ctx) => {
 
-    if (isNaN(Number(ctx.text)) || (ctx.text != 1 && ctx.text != 2)) {
+    if ( isNaN(Number(ctx.text)) || ( ctx.text != 1 && ctx.text != 2 ) ) {
         return await ctx.reply("لطفا فقط عدد وارد نمایید : (۱ یا ۲)", cancelInlineKeyboard());
     }
-    if (ctx.text == 1) {
+    if ( ctx.text == 1 ) {
         ctx.session.configInsertData.type = "SINGLE_CONFIG";
     } else {
         ctx.session.configInsertData.type = "GROUP_CONFIG";
@@ -61,10 +75,10 @@ configTypeScene.on("text", async (ctx) => {
     await ctx.scene.enter("configStatusScene");
 })
 configStatusScene.on("text", async (ctx) => {
-    if (isNaN(Number(ctx.text)) || (ctx.text != 1 && ctx.text != 2)) {
+    if ( isNaN(Number(ctx.text)) || ( ctx.text != 1 && ctx.text != 2 ) ) {
         return await ctx.reply("لطفا فقط عدد وارد نمایید : (۱ یا ۲)", cancelInlineKeyboard());
     }
-    if (ctx.text == 1) {
+    if ( ctx.text == 1 ) {
         ctx.session.configInsertData.status = "ACTIVE";
     } else {
         ctx.session.configInsertData.status = "INACTIVE";
@@ -74,7 +88,7 @@ configStatusScene.on("text", async (ctx) => {
     await ctx.scene.enter("configPriceScene");
 });
 configPriceScene.on("text", async (ctx) => {
-    if (isNaN(parseFloat(ctx.text))) {
+    if ( isNaN(parseFloat(ctx.text)) ) {
         return ctx.reply("لطفا فقط عدد وارد نمایید", cancelInlineKeyboard());
     }
     ctx.session.configInsertData.price = ctx.text;
@@ -117,7 +131,7 @@ configExpiredAtScene.on("text", async (ctx) => {
     try {
 
 
-        if (isNaN(Number(ctx.text))) {
+        if ( isNaN(Number(ctx.text)) ) {
             return ctx.reply("لطفا فقط عدد وارد نمایید");
         }
         ctx.session.configInsertData.exprired_at = ctx.text;
@@ -129,7 +143,7 @@ configExpiredAtScene.on("text", async (ctx) => {
         ctx.reply("اطلاعات کانفیگ ثبت شد");
 
         await ctx.scene.leave();
-    } catch (error) {
+    } catch ( error ) {
         console.log(error);
         await ctx.reply("خطا در ثبت اطلاعات");
     }
