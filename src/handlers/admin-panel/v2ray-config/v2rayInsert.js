@@ -10,7 +10,7 @@ import {
     configLinkScene,
     configStatusScene,
     configTypeScene
-} from "../../../services/configScene.js";
+} from "../../../services/Scenes/mainScenes.js";
 import v2rayModel from "../../../model/v2ray.js";
 import { cancelInlineKeyboard } from "../../../keyboards/inlinekeyboard.js";
 import { showV2rayForm } from "../../../utils/helper.js";

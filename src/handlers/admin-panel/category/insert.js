@@ -1,5 +1,5 @@
 import { cancelInlineKeyboard, cancelWithSkipInlineKeyboard } from "../../../keyboards/inlinekeyboard.js";
-import { cateNameScene, cateDescriptionScene, cateStatusScene } from "../../../services/Scenes/category.js";
+import { cateNameScene, cateDescriptionScene, cateStatusScene } from "../../../services/Scenes/mainScenes.js";
 import categoryModel from "../../../model/category.js";
 
 export const addCategory = async (ctx) => {

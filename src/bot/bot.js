@@ -7,8 +7,7 @@ import { auth, isAdmin } from "../middlewares/auth.js";
 import { redisGetStep, redisGoBackStep, } from "../services/redis.js";
 import { v2RayManage } from "../handlers/admin-panel/v2ray-config/v2rayManage.js";
 import { v2rayConfigInsert } from "../handlers/admin-panel/v2ray-config/v2rayInsert.js";
-import { configStage } from "../services/configScene.js";
-import { categoryStage } from "../services/Scenes/category.js";
+import { mainStage } from "../services/Scenes/mainScenes.js";
 import { showAllConfig } from "../handlers/admin-panel/v2ray-config/v2rayShow.js";
 import { configList, selectedConfigForBuy } from "../handlers/user-panel/v2ray-config/buy-config/buyConfig.js";
 import { addCategory } from "../handlers/admin-panel/category/insert.js";
@@ -18,8 +17,7 @@ export const bot = new Telegraf(token);
 
 export const setupBot = async () => {
     bot.use(session());
-    bot.use(categoryStage.middleware());
-    bot.use(configStage.middleware());
+    bot.use(mainStage.middleware());
 
     bot.use(auth);
 
