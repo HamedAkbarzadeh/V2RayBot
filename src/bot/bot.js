@@ -5,10 +5,10 @@ import { accountInfo } from "../handlers/user-panel/account/account-info.js";
 import { adminPanel } from "../handlers/admin-panel/adminPanel.js";
 import { auth, isAdmin } from "../middlewares/auth.js";
 import { redisGetStep, redisGoBackStep, } from "../services/redis.js";
-import { v2RayManage } from "../handlers/admin-panel/v2ray-config/v2rayManage.js";
-import { v2rayConfigInsert } from "../handlers/admin-panel/v2ray-config/v2rayInsert.js";
+import { manage } from "../handlers/admin-panel/v2ray-config/manage.js";
+import { v2rayConfigInsert } from "../handlers/admin-panel/v2ray-config/insert.js";
 import { mainStage } from "../services/Scenes/mainScenes.js";
-import { showAllConfig } from "../handlers/admin-panel/v2ray-config/v2rayShow.js";
+import { showAllConfig } from "../handlers/admin-panel/v2ray-config/show.js";
 import { configList, selectedConfigForBuy } from "../handlers/user-panel/v2ray-config/buy-config/buyConfig.js";
 import { addCategory } from "../handlers/admin-panel/category/insert.js";
 import { categoryManage } from "../handlers/admin-panel/category/manage.js";
@@ -34,7 +34,7 @@ export const setupBot = async () => {
                 adminPanel(ctx)
                 break;
             case "v2rayManage":
-                v2RayManage(ctx);
+                manage(ctx);
                 break;
             case "accountInfo":
                 accountInfo(ctx);
@@ -56,7 +56,7 @@ export const setupBot = async () => {
     bot.use(isAdmin);
     bot.hears("ادمین پنل", adminPanel);
     //** v2ray-config management **/
-    bot.hears("مدیریت کانفیگ ها", v2RayManage);
+    bot.hears("مدیریت کانفیگ ها", manage);
     bot.hears("افزودن کانفیگ", v2rayConfigInsert);
     bot.hears("نمایش تمام کانفیگ ها", showAllConfig);
 

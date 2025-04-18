@@ -4,7 +4,7 @@ export const cancelMiddleware = async (ctx, next) => {
         if ( typeof ctx.callbackQuery != "undefined" )
             callback_data = ctx.callbackQuery.data;
 
-        if ( callback_data == "cancel" ) {
+        if ( callback_data === 'CANCEL' ) {
             const currentScene = ctx.scene.current?.id;
             console.log(currentScene);
             if ( currentScene ) {

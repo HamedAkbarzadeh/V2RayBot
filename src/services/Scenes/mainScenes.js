@@ -1,5 +1,6 @@
 import { Scenes } from "telegraf";
 import { cancelMiddleware } from "../../middlewares/cancel.js";
+import { skipMiddleware } from "../../middlewares/skip.js";
 
 //** category ** \\
 //insert
@@ -56,3 +57,4 @@ export const mainStage = new Scenes.Stage([
 ]);
 
 mainStage.use(cancelMiddleware);
+mainStage.use(skipMiddleware);

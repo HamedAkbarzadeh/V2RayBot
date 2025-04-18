@@ -17,6 +17,7 @@ import { showV2rayForm } from "../../../utils/helper.js";
 
 
 export const v2rayConfigInsert = async (ctx) => {
+    ctx.session.currentFlow = 'createConfigScene';
     await ctx.scene.enter("configNameScene");
 }
 
